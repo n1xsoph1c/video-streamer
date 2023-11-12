@@ -3,10 +3,10 @@ const app = express()
 var cors = require('cors')
 const nameToImdb = require("name-to-imdb")
 
-// app.get("/", function (req, res) {
-//     res.sendFile(__dirname + "/src/index.html")
-// })
-app.use(cors({origin: "*"}));
+app.get("/movie", function (req, res) {
+    res.sendFile(__dirname + "/dist/index.html")
+})
+app.use(cors({origin: "gamisticstudio.com"}));
 app.get("/api/:id", (req, res) => {
     let id = req.params.id
  
@@ -16,6 +16,4 @@ app.get("/api/:id", (req, res) => {
 })
 
 
-app.listen(8000, () => {
-    console.log("listening on http://localhost:8000/")
-})
+app.listen()

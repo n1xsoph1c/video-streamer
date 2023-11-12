@@ -1,21 +1,14 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 
 const App = () => {
   const [data, setData] = useState<any>();
   const [setQuery, setSetQuery] = useState('');
-  const [details, setDetails] = useState({ name: "", image: "", year: "", feature: "" });
   const [isPlaying, setPlaying] = useState(false);
 
-  useEffect(() => {
-    if (data !== undefined && data.name && data.image && data.year && data.feature) {
-      setDetails({
-        name: data.name, image: data.image.src, year: data.year, feature: data.feature
-      });
-    }
-  }, [data]);
+
 
   const getData = (q: string) => {
-    fetch(`http://localhost:8000/api/${q}`)
+    fetch(`https://gamisticstudio.com/api/${q}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res);
