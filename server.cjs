@@ -1,13 +1,19 @@
 const express = require("express")
 const app = express()
 var cors = require('cors')
+const path = require('path')
 const nameToImdb = require("name-to-imdb")
 
+
+// Serve static files from the 'build' directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Handle requests for the root route
 app.get("/movie", function (req, res) {
-    res.sendFile(__dirname + "/dist/index.html")
+    res.sendFile(__dirname + path.join("dist", "index.html"))
 })
-app.use(cors({origin: "gamisticstudio.com"}));
-app.get("/api/:id", (req, res) => {
+
+app.get("/movie/api/:id", (req, res) => {
     let id = req.params.id
  
     nameToImdb(id,  (err, resp, inf) => {
@@ -16,4 +22,4 @@ app.get("/api/:id", (req, res) => {
 })
 
 
-app.listen()
+app.listen(8000)

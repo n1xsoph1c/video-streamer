@@ -8,7 +8,7 @@ const App = () => {
 
 
   const getData = (q: string) => {
-    fetch(`https://gamisticstudio.com/api/${q}`)
+    fetch(`https://gamisticstudio.com/movie/api/${q}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res);
